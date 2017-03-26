@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PES University Available Parking Slots</title> 
+        <script src="websocket_client.js"></script>
+		<style>
+		rainbowParking {
+			display: block;
+			background-color: #dddddd;
+			padding: 30px;
+			font-size: 70px;
+			line-height: 60%;
+			margin-left:40px;
+			margin-right:40px;
+			border-style: groove;
+		}
+		indigoParking {
+			display: block;
+			background-color: #dddddd;
+			padding: 30px;
+			font-size: 70px;
+			line-height: 60%;
+			margin-left:40px;
+			margin-right:40px;
+			border-style: groove;
+		}
+		
+        </style>
+    </head>
+    <body onload="javascript:init()">
+        <h2 style="color:blue;text-align:center;font-size: 50px">PES University - Available Parking Slots</h2>   
+
+        <div class="container">
+            <div class="left">
+	          <br>
+            <br>
+            <br>
+            <h1 style="line-height: 30%; color:black;margin-left:40px">Panini Block Parking</h1>
+			  <h4 style="line-height: 10%; margin-left:40px"></h4>
+        <rainbowParking id="rainbow">Receiving Data...</rainbowParking>
+			  <h1 style="line-height: 30%; color:white;margin-left:40px">1</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+			  <h1 style="line-height: 30%; color:black;margin-left:40px">Electrical Block Parking</h1>
+        <h4 style="line-height: 10%; margin-left:40px"></h4>
+			  <indigoParking id="indigo">Receiving Data...</indigoParking>
+	        </div>
+            <div class="right">
+			 <div id="map" style="width:100%;height:100%">
+			 
+			 </div>
+			</div>
+        </div>
+          
+			    
+        <div id = "websocketelements">
+        <div id="attributes_log"> </div>
+        </div>
+		
+		
+
+        
+
+        <div id="output"></div> 
+		
+		
+		
+    </body>
+</html>
