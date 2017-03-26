@@ -1,4 +1,8 @@
-
+// real-time interactions are possible using websocket
+// Notice the ws:. This is the new URL schema for WebSocket connections. 
+// There is also wss: for secure WebSocket connection the same way 
+// https: is used for secure HTTP connections.
+// you can get it from Artik cloud documentation page
 var wsUri = "wss://api.artik.cloud/v1.1/websocket?ack=true";
 var device_id = "dfddfca47c244017a5baf1e63805c786"; // Edison parking DEVICE ID
 var device_token = "b93bd1c737bd49fea93a870e7050100a"; //Intel Edison parking DEVICE TOKEN
@@ -13,7 +17,7 @@ function init() {
     attributes_log = document.getElementById("attributes_log");
     if (browserSupportsWebSockets() === false) {
 		// check browser support websocket protocol or not
-        //writeToScreen("Sorry! your web browser does not support WebSockets. Try using Google Chrome or Firefox Latest Versions");
+        writeToScreen("Sorry! your web browser does not support WebSockets. Try using Google Chrome or Firefox Latest Versions");
 
         var element = document.getElementById("websocketelements");
         element.parentNode.removeChild(element);
@@ -25,7 +29,7 @@ function init() {
     //When the connection is open, function invoked automatically
     websocket.onopen = function() {		
         //writeAttributeValues('onOpen Event Fired');
-        //writeToScreen("Successfully connected to Parking System");
+        writeToScreen("Successfully connected to Parking System");
 		// after connection is open, registration is required for secure data transmission
 		register();
     };
@@ -63,7 +67,7 @@ function doSend(message) {
 	// To send a message through the WebSocket connection you call the send() method on your WebSocket instance
     websocket.send(message);
     //writeAttributeValues('onSend Event Fired');
-  //  writeToScreen("SENT: " + message);
+    //writeToScreen("SENT: " + message);
 }
 
 function writeAttributeValues(prefix) {
@@ -107,7 +111,7 @@ function register(){
     //writeToScreen("Registering device on the WebSocket connection");
     try{
         var registerMessage = '{"type":"register", "sdid":"'+device_id+'", "Authorization":"bearer '+device_token+'", "cid":"'+getTimeMillis()+'"}';
-      //  writeToScreen('Sending register message ' + registerMessage + '\n');
+        //writeToScreen('Sending register message ' + registerMessage + '\n');
         websocket.send(registerMessage, {mask: true});
         isWebSocketReady = true;
 		//document.getElementById("rainbow").innerHTML = "";
@@ -131,7 +135,7 @@ function handleRcvMsg(msg){
     var rainbowData = actions[0].parameters.text; 
 	var indigoData = actions[0].parameters.text2; 
     console.log("The received action is " + actions);  
-	document.getElementById("rainbow").innerHTML = "Capacity: 12,  Free Slots: "+parking_slots;
-	document.getElementById("indigo").innerHTML = "Capacity: 12,  Free Slots: "+indigoData;
+	document.getElementById("rainbow").innerHTML = "Capacity: 12,  Free Slot: "+rainbowData;
+	document.getElementById("indigo").innerHTML = "Capacity: 12,  Free Slot: "+indigoData;
    
 }
