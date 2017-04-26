@@ -4,8 +4,8 @@
 // https: is used for secure HTTP connections.
 // you can get it from Artik cloud documentation page
 var wsUri = "wss://api.artik.cloud/v1.1/websocket?ack=true";
-var device_id = "dfddfca47c244017a5baf1e63805c786"; // Edison parking DEVICE ID
-var device_token = "b93bd1c737bd49fea93a870e7050100a"; //Intel Edison parking DEVICE TOKEN
+var device_id = "041de6aca7274d88a52f0d78eeebc740"; // Edison parking DEVICE ID
+var device_token = "89c320eb42a7494bb819caf9f8ad4f8c"; //Intel Edison parking DEVICE TOKEN
 
 var output;
 var attributes_log;
@@ -29,7 +29,7 @@ function init() {
     //When the connection is open, function invoked automatically
     websocket.onopen = function() {		
         //writeAttributeValues('onOpen Event Fired');
-        writeToScreen("Successfully connected to Parking System");
+        //writeToScreen("Successfully connected to Parking System");
 		// after connection is open, registration is required for secure data transmission
 		register();
     };
